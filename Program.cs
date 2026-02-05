@@ -10,17 +10,17 @@ class Program
         List<Item> items = await Utils.GetAllItems();
 
         // Using method syntax
-        // PrintAllItemNamesMS(items);
+        PrintAllItemNamesMS(items);
 
         // Using query syntax
-        PrintAllItemNamesQS(items);
+        // PrintAllItemNamesQS(items);
     }
 
     static void PrintAllItemNamesMS(List<Item> items)
     {
-        var itemNames = items.Select(item => item.Name).ToList();
+        List<string?> itemNames = items.Select(item => item.Name).ToList();
 
-        foreach (var name in itemNames)
+        foreach (string name in itemNames)
         {
             Console.WriteLine(name);
         }
@@ -31,7 +31,7 @@ class Program
         List<string> itemNames = (from item in items
                          select item.Name).ToList();
 
-        foreach (var name in itemNames)
+        foreach (string name in itemNames)
         {
             Console.WriteLine(name);
         }
