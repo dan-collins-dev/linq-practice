@@ -1,9 +1,39 @@
-﻿namespace LinqPractice;
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace LinqPractice;
 
 class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        List<Item> items = await Utils.GetAllItems();
+
+        // Using method syntax
+        // PrintAllItemNamesMS(items);
+
+        // Using query syntax
+        PrintAllItemNamesQS(items);
+    }
+
+    static void PrintAllItemNamesMS(List<Item> items)
+    {
+        var itemNames = items.Select(item => item.Name).ToList();
+
+        foreach (var name in itemNames)
+        {
+            Console.WriteLine(name);
+        }
+    }
+
+    static void PrintAllItemNamesQS(List<Item> items)
+    {
+        List<string> itemNames = (from item in items
+                         select item.Name).ToList();
+
+        foreach (var name in itemNames)
+        {
+            Console.WriteLine(name);
+        }
     }
 }
