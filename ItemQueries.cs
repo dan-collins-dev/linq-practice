@@ -6,10 +6,7 @@ public static class ItemQueries
     {
         List<string?> itemNames = items.Select(item => item.Name).ToList();
 
-        foreach (string name in itemNames)
-        {
-            Console.WriteLine(name);
-        }
+        itemNames.ForEach((name) => Console.WriteLine(name));
     }
 
     public static void PrintAllItemNamesQS(List<Item> items)
@@ -17,9 +14,6 @@ public static class ItemQueries
         List<string> itemNames = (from item in items
                          select item.Name).ToList();
 
-        foreach (string name in itemNames)
-        {
-            Console.WriteLine(name);
-        }
+        itemNames.ForEach((name) => Console.WriteLine(name));
     }
 }
